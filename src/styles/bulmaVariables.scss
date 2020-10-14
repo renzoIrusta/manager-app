@@ -1,0 +1,17 @@
+@import '../../node_modules/bulma/sass/utilities/initial-variables.sass';
+@import '../../node_modules/bulma/sass/utilities/functions.sass';
+
+$first: #124559;
+$second: #857F74;
+$third: #82D173;
+$fourth: #65AFFF;
+$fifth: #D9DBF1;
+
+// Set the derived variables
+
+$primary: $first;
+$success: $second;
+$link: $third;
+$info: $fourth;
+
+// @import '../../node_modules/bulma';

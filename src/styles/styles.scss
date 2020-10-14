@@ -1,0 +1,6 @@
+@import './bulmaVariables.scss';
+// It should be at the top because it contains variables 
+@import './base.scss';
+
+
+@import '../../node_modules/bulma';
