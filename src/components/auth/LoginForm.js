@@ -1,37 +1,36 @@
-import React from 'react'
+import React from 'react';
+import { useForm } from "react-hook-form";
+import { EmailInput } from './EmailInput';
+import { PasswordInput } from './PasswordInput';
 
 export const LoginForm = () => {
 
+    const { register, errors, handleSubmit } = useForm();
 
+    const onSubmit = (data, e) => {
+        console.log(data)
+        e.target.reset();
+    }
 
     return (
         <form
-        // onSubmit={handleLogin}
-        className="auth__form"
+            onSubmit={handleSubmit(onSubmit)}
+            className="auth__form"
         >
-            <div className="field my-10">
-                <label className="label has-text-light">Email</label>
+            <EmailInput
+                errors={errors}
+                register={register}
+            />
+            <PasswordInput
+                errors={errors}
+                register={register}
+            />
+            <div className="field mt-6">
                 <div className="control">
-                    <input 
-                    className="input" 
-                    type="text" 
-                    placeholder="Ingresa tu email" 
-                    />
-                </div>
-            </div>
-            <div className="field">
-                <label className="label has-text-light">Contraseña</label>
-                <div className="control">
-                    <input 
-                    className="input" 
-                    type="password" 
-                    placeholder="Ingresa tu contraseña" 
-                    />
-                </div>
-            </div>
-            <div className="field ">
-                <div className="control mt-6">
-                    <button className="button is-link is-fullwidth is-outlined">
+                    <button
+                        className="button is-link is-fullwidth is-outlined"
+                        disabled={(errors.email) ? true : (errors.password) ? true : false}
+                    >
                         Ingresar
                     </button>
                 </div>

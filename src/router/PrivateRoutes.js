@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
 // aquí tengo que usar redux para saber si está logueado o no
