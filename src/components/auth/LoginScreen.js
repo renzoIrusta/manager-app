@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { LoginForm } from './LoginForm';
+
+// No olvidar posibilidad de poner imagen en el login
 
 export const LoginScreen = () => {
     return (
-        <div>
-            <h1 className="title">Login Screen</h1>
+        <div className="auth__form-container">
+            <LoginForm />
         </div>
     )
 }

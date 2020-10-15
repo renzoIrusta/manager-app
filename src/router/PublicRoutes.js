@@ -3,12 +3,17 @@ import { Redirect, Route } from 'react-router-dom';
 
 export const PublicRoutes = ({
     component: Component,
+    isLogged,
     ...rest
 }) => {
     return (
         <div>
              <Route {...rest}
-             component={ Component }
+             component={ ( props ) => (
+                 ( !isLogged )
+                    ? <Component {...props}/>
+                    : <Redirect to="/" />
+             ) }
             />
         </div>
     )

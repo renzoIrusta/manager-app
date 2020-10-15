@@ -13,6 +13,8 @@ export const DashboardRoutes = () => {
             <div>
                 <Switch>
                     <Route exact path="/" component={ Dashboard } />
+
+                    <Redirect to="/" />
                 </Switch>
             </div>
         </>

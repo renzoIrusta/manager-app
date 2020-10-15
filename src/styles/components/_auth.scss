@@ -1,0 +1,22 @@
+
+.auth__form-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.auth__form {
+    width: 90vw;
+    max-width: 600px;
+}
+
+// .auth__image {
+//     clip-path: circle(50% at 50% 50%);
+//     height: 10em;
+//     width: 10em;
+// }
