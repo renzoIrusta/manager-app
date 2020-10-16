@@ -1,5 +1,6 @@
 Arreglar los issues en dashboard;
-Terminar con el loggin con Firebase- Agregar todas las autenticaciones;
+Terminar con el loggin con Firebase
+Arreglar animaciones en navbar
 Continuar con el calendario.
 Hacer página de clientes.
 Hacer vista de administrador: aquí tiene que estar la vista para agregar usuarios.

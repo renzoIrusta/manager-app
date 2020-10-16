@@ -7,6 +7,7 @@ export const PasswordInput = ({ errors, register }) => {
                 <label className="label has-text-light">Contraseña</label>
                 <div className="control has-icons-right">
                     <input
+                        autoComplete="off"
                         className={`input ${errors.password && 'is-danger'}`}
                         name="password"
                         placeholder="Ingresa tu contraseña"

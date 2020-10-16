@@ -23,6 +23,7 @@ export const AppRouter = () => {
                 <div>
                     <Switch>
                         <PublicRoutes
+                            exact
                             path="/login"
                             component={ LoginScreen }
                             isLogged={ logged }

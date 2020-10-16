@@ -7,6 +7,7 @@ export const EmailInput = ({ errors, register }) => {
                 <label className="label has-text-light">Email</label>
                 <div className="control has-icons-right">
                     <input
+                        autoComplete="off"
                         className={`input ${errors.email && 'is-danger'}`}
                         name="email"
                         placeholder="Ingresa tu email"

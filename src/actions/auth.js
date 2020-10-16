@@ -1,10 +1,10 @@
-import { types } from "../types/types"
+import { types } from "../types/types";
 
 
-export const login = ( uid, displayName ) => ({
-    type: types.login,
-    payload: {
-        uid,
-        displayName
-    }
+export const authLogin = () => ({
+    type: types.login
+})
+
+export const authLogout = () => ({
+    type: types.logout
 })
