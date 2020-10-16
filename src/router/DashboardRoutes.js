@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { CustumersScreen } from '../components/customers/CustumersScreen';
@@ -17,6 +18,7 @@ export const DashboardRoutes = () => {
                     <Route exact path="/" component={ Dashboard } />
                     <Route exact path="/custumers" component={ CustumersScreen } />
                     <Route exact path="/calendar" component={ CalendarScreen } />
+                    <Route exact path="/register" component={ RegisterScreen } />
 
                     <Redirect to="/" />
                 </Switch>
