@@ -8,4 +8,6 @@ export const types = {
     uiOpenNavbar: '[UI] Open navbar',
     uiCloseNavbar: '[UI] Close navbar',
 
+    createUser: '[Users] Create User'
+
 }

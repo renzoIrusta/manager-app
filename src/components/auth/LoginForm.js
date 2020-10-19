@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 
 import { authLogin } from '../../actions/auth';
 
-import { EmailInput } from './EmailInput';
-import { PasswordInput } from './PasswordInput';
+import { EmailInput } from './inputs/EmailInput';
+import { PasswordInput } from './inputs/PasswordInput';
 
 export const LoginForm = () => {
 

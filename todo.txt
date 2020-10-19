@@ -4,4 +4,4 @@ Arreglar animaciones en navbar
 Continuar con el calendario.
 Hacer página de clientes.
 Hacer vista de administrador: aquí tiene que estar la vista para agregar usuarios.
-Agregar inputs de nombre, apellido, comprobación de contraseña, y color para el registro de usuarios. 
+Intentar arreglar el issue con el campo de color cuando le paso el reset(); 

@@ -1,13 +1,16 @@
 import { types } from "../types/types";
 import { firebase } from '../firebase/config';
 import Swal from "sweetalert2";
+import { userCreate } from "./users";
 
 
-export const authLogin = ( uid, displayName ) => ({
+export const authLogin = ( {uid, displayName, lastName, color} ) => ({
     type: types.login,
     payload: {
         uid,
-        displayName
+        displayName,
+        lastName,
+        color
     }
 })
 
@@ -15,21 +18,21 @@ export const authLogout = () => ({
     type: types.logout
 })
 
-export const startRegisterWithEmailPassword = ( email, password, name, lastname, color ) => {
+export const startRegisterWithEmailPassword = ( {email, password, firstName, lastName, color} ) => {
 
-    return ( dispatch ) => {
+    return ( dispatch, getState ) => {
         firebase.auth().createUserWithEmailAndPassword( email, password )
-        .then( async({ user }) => {
+        .then( async( {user} ) => {
+            
+            await user.updateProfile({
+                displayName: firstName,
+            })
 
-            // await user.updateProfile({
-            //     displayName: name,
-            //     lastname: lastname, 
-            //     color: color 
-            // })
-
-            dispatch(
-                authLogin( user.uid, user.displayName )
+            await dispatch(
+                authLogin( user )
             )
+
+            dispatch( userCreate( email, firstName, lastName, color ) )
 
         })
         .catch( e => {
@@ -47,7 +50,7 @@ export const startLoginWithEmailPassword = ( email, password ) => {
             .then( ({ user }) => {
 
                 dispatch(
-                    authLogin( user.uid, user.displayName )
+                    authLogin( user )
                 )
 
             } ) 
@@ -58,3 +61,24 @@ export const startLoginWithEmailPassword = ( email, password ) => {
     }
 
 }
+
+// export const userCreate = ( {email, firstName, lastName, color} ) => {
+
+//     return async ( dispatch, getState ) => {
+
+//         const uid = getState().auth.uid;
+
+//         const newUser = {
+//             name: firstName,
+//             lastName: lastName,
+//             email: email,
+//             color: color 
+//         }
+
+//         await db.collection(`users/${uid}/data`).add( newUser )
+
+
+//     }
+
+// }
+
