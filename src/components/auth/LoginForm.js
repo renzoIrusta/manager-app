@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { useDispatch } from 'react-redux';
 
-import { authLogin } from '../../actions/auth';
+import { startLoginWithEmailPassword } from '../../actions/auth';
 
 import { EmailInput } from './inputs/EmailInput';
 import { PasswordInput } from './inputs/PasswordInput';
@@ -12,8 +12,8 @@ export const LoginForm = () => {
     const dispatch = useDispatch()
     const { register, errors, handleSubmit } = useForm();
 
-    const onSubmit = (data, e) => {
-        dispatch( authLogin() )
+    const onSubmit = ({email, password}, e) => {
+        dispatch( startLoginWithEmailPassword( email, password ) )
         e.target.reset();
     }
 

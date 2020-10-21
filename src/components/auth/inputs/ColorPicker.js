@@ -19,7 +19,7 @@ export const ColorPicker = ({ errors, register }) => {
                     }
                 />
                 <span className="has-text-danger is-size-7">
-                    {errors.color && 'Tienes que elegir un color'}
+                    {errors.color && 'Tienes que elegir un color, no puede ser ni blanco ni negro'}
                 </span>
             </div>
         </div>

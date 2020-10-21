@@ -4,4 +4,4 @@ Arreglar animaciones en navbar
 Continuar con el calendario.
 Hacer página de clientes.
 Hacer vista de administrador: aquí tiene que estar la vista para agregar usuarios.
-Intentar arreglar el issue con el campo de color cuando le paso el reset(); 
+Terminar de diseñar la base de datos.

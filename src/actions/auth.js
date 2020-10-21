@@ -4,13 +4,11 @@ import Swal from "sweetalert2";
 import { userCreate } from "./users";
 
 
-export const authLogin = ( {uid, displayName, lastName, color} ) => ({
+export const authLogin = ( { uid, displayName } ) => ({
     type: types.login,
     payload: {
         uid,
         displayName,
-        lastName,
-        color
     }
 })
 
@@ -18,9 +16,12 @@ export const authLogout = () => ({
     type: types.logout
 })
 
-export const startRegisterWithEmailPassword = ( {email, password, firstName, lastName, color} ) => {
+export const startRegisterWithEmailPassword = ( {email, password, firstName, lastName, color, phone} ) => {
 
     return ( dispatch, getState ) => {
+
+        
+
         firebase.auth().createUserWithEmailAndPassword( email, password )
         .then( async( {user} ) => {
             
@@ -28,11 +29,10 @@ export const startRegisterWithEmailPassword = ( {email, password, firstName, las
                 displayName: firstName,
             })
 
-            await dispatch(
-                authLogin( user )
-            )
 
-            dispatch( userCreate( email, firstName, lastName, color ) )
+            dispatch( userCreate( user.uid, email, firstName, lastName, color, phone ) )
+
+            Swal.fire('Usuario registrado', firstName, 'success')
 
         })
         .catch( e => {
@@ -48,7 +48,7 @@ export const startLoginWithEmailPassword = ( email, password ) => {
 
         firebase.auth().signInWithEmailAndPassword( email, password )
             .then( ({ user }) => {
-
+                // console.log(user);
                 dispatch(
                     authLogin( user )
                 )

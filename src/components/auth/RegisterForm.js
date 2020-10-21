@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
@@ -7,7 +7,9 @@ import { startRegisterWithEmailPassword } from '../../actions/auth';
 import { ColorPicker } from './inputs/ColorPicker';
 
 import { EmailInput } from './inputs/EmailInput';
+import { FileInput } from './inputs/FileInput';
 import { PasswordInput } from './inputs/PasswordInput';
+import { PhoneInput } from './inputs/PhoneInput';
 import { RetypePassword } from './inputs/RetypePassword';
 import { TextInput } from './inputs/TextInput';
 
@@ -17,17 +19,27 @@ export const RegisterForm = () => {
 
     const [passwordState, setPasswordState] = useState("")
 
+    const [file, setFile] = useState(undefined)
+
     const { register, errors, handleSubmit } = useForm();
 
-    const onSubmit = ( data, e) => {
-        dispatch( startRegisterWithEmailPassword( data ) )
+    const handleChange = (e) => {
+        console.log(e.target.files[0])
+        if (e.target.files[0]){
+            setFile(e.target.files[0])
+        }
+    }
+
+    const onSubmit = (data, e) => {
+        console.log(data);
+        // dispatch(startRegisterWithEmailPassword(data))
         e.target.reset();
     }
 
-    
+
 
     const handlePassword = (e) => {
-        setPasswordState( e.target.value )
+        setPasswordState(e.target.value)
     };
 
     return (
@@ -55,15 +67,25 @@ export const RegisterForm = () => {
                 errors={errors}
                 register={register}
             />
+            <FileInput 
+                errors={errors}
+                register={register}
+                handleChange={handleChange}
+                fileName={ file ? file.name : 'Image'}
+            />
+            <PhoneInput
+                errors={errors}
+                register={register}
+            />
             <PasswordInput
                 errors={errors}
                 register={register}
-                handlePassword={ handlePassword }
+                handlePassword={handlePassword}
             />
             <RetypePassword
-                errors={ errors }
-                register={ register }
-                data={ passwordState }
+                errors={errors}
+                register={register}
+                data={passwordState}
             />
             <div className="field mt-6">
                 <div className="control">

@@ -2,34 +2,35 @@ import { db } from "../firebase/config";
 import { types } from "../types/types";
 
 
-export const userCreate = ( email, firstName, lastName, color, uid ) => {
+export const userCreate = ( uid, email, firstName, lastName, color, phone ) => {
 
-    return async ( dispatch, getState ) => {
-
-        const uid = getState().auth.uid;
+    return async ( dispatch ) => {
 
         const newUser = {
             name: firstName,
             lastName: lastName,
             email: email,
-            color: color 
+            color: color,
+            phone: phone, 
         }
 
-        const data = await db.collection(`users/${uid}/data`).add( newUser )
-        console.log( data.id );
-        dispatch( addUserToStore( newUser, data.id ) )
+        await db.collection('users').doc(`${uid}`).set({data: newUser})
+        
+        dispatch( addUserToStore( newUser, uid ) )
 
     }
 
 }
 
-export const addUserToStore = ( {email, name, lastName, color}, id ) => ({
+export const addUserToStore = ( {email, name, lastName, color, phone}, uid ) => ({
     type: types.createUser,
     payload: {
-        dataUserId: id,
+        uid: uid,
         name: name,
         lastName: lastName,
         email: email,
-        color: color
+        color: color,
+        phone: phone
     }
 })
+

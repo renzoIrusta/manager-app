@@ -6,6 +6,7 @@ import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { CustumersScreen } from '../components/customers/CustumersScreen';
 import { Dashboard } from '../components/ui/Dashboard';
 import { NavBar } from '../components/ui/NavBar';
+import { UsersScreen } from '../components/users/UsersScreen';
 
 
 
@@ -18,7 +19,8 @@ export const DashboardRoutes = () => {
                     <Route exact path="/" component={ Dashboard } />
                     <Route exact path="/custumers" component={ CustumersScreen } />
                     <Route exact path="/calendar" component={ CalendarScreen } />
-                    <Route exact path="/register" component={ RegisterScreen } />
+                    <Route exact path="/users/register" component={ RegisterScreen } />
+                    <Route exact path="/users" component={ UsersScreen } />
 
                     <Redirect to="/" />
                 </Switch>

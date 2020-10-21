@@ -2,3 +2,13 @@ html, body {
     background-color: $first !important;
     height: 100vh;
 }
+
+.custom-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.pointer {
+    cursor: pointer;
+}

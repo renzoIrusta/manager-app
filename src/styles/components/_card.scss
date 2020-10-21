@@ -1,0 +1,10 @@
+
+.card__size {
+    min-width: 300px !important; 
+    max-width: 350px !important;
+}
+
+.card__content {
+    display: flex;
+    justify-content: space-between;
+}
