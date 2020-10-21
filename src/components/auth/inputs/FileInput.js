@@ -7,7 +7,7 @@ export const FileInput = ({ errors, register, handleChange, fileName }) => {
             <label className="label has-text-light">Sube una imagen</label>
             <div className="control has-icons-right">
 
-                <div className="file has-name is-fullwidth">
+                <div className="file has-name">
                     <label className="file-label">
                         <input 
                         className="file-input" 
@@ -20,7 +20,7 @@ export const FileInput = ({ errors, register, handleChange, fileName }) => {
                                 <i className="fas fa-upload"></i>
                             </span>
                             <span className="file-label">
-                                Sube una imagen
+                                Subí una imagen
                             </span>
                         </span>
                         <span className="file-name has-text-white">
@@ -28,7 +28,6 @@ export const FileInput = ({ errors, register, handleChange, fileName }) => {
                         </span>
                     </label>
                 </div>
-
                 {
                     errors.image
                     &&

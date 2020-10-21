@@ -1,7 +1,7 @@
 import { types } from "../types/types";
 import { firebase } from '../firebase/config';
 import Swal from "sweetalert2";
-import { userCreate } from "./users";
+import { userCreate, userCreateWithPhoto } from "./users";
 
 
 export const authLogin = ( { uid, displayName } ) => ({
@@ -16,12 +16,11 @@ export const authLogout = () => ({
     type: types.logout
 })
 
-export const startRegisterWithEmailPassword = ( {email, password, firstName, lastName, color, phone} ) => {
+export const startRegisterWithEmailPassword = ( {email, password, firstName, lastName, color, phone}, file ) => {
 
-    return ( dispatch, getState ) => {
+    return ( dispatch ) => {
 
         
-
         firebase.auth().createUserWithEmailAndPassword( email, password )
         .then( async( {user} ) => {
             
@@ -29,10 +28,13 @@ export const startRegisterWithEmailPassword = ( {email, password, firstName, las
                 displayName: firstName,
             })
 
-
-            dispatch( userCreate( user.uid, email, firstName, lastName, color, phone ) )
-
-            Swal.fire('Usuario registrado', firstName, 'success')
+            if (file){
+               dispatch (userCreateWithPhoto( user.uid, email, firstName, lastName, color, phone, file)) 
+            } else {
+                dispatch(userCreate( user.uid, email, firstName, lastName, color, phone ))
+            }
+             
+                
 
         })
         .catch( e => {

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 
 import { startRegisterWithEmailPassword } from '../../actions/auth';
+import { fireSwal } from '../../helpers/fireSwal';
 import { ColorPicker } from './inputs/ColorPicker';
 
 import { EmailInput } from './inputs/EmailInput';
@@ -30,13 +31,12 @@ export const RegisterForm = () => {
         }
     }
 
-    const onSubmit = (data, e) => {
-        console.log(data);
-        // dispatch(startRegisterWithEmailPassword(data))
+    const onSubmit = (data, e) => { 
+        fireSwal( file )
+        dispatch( startRegisterWithEmailPassword(data, file) ) 
         e.target.reset();
+        setFile(undefined)
     }
-
-
 
     const handlePassword = (e) => {
         setPasswordState(e.target.value)
