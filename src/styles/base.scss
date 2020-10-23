@@ -4,11 +4,15 @@ html, body {
 }
 
 .custom-container {
+    align-items: center;
     display: flex;
-    justify-content: space-evenly;
     flex-wrap: wrap;
+    height: 100vh;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .pointer {
     cursor: pointer;
 }
+

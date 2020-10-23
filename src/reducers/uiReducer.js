@@ -3,7 +3,7 @@ import { types } from "../types/types";
 
 const initialState = {
     loading: false,
-    dashboardModal: false
+    dashboardModal: false,
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -19,6 +19,7 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 dashboardModal: false,
             }
+        
 
         default:
             return state;

@@ -33,6 +33,7 @@ export const UsersScreen = () => {
                             name={user.data.name}
                             email={user.data.email}
                             phone={user.data.phone}
+                            color={user.data.color}
                         />
 
                     ))

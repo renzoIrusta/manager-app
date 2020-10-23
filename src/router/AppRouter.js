@@ -11,11 +11,13 @@ import { PublicRoutes } from './PublicRoutes';
 import { DashboardRoutes } from './DashboardRoutes';
 import { LoginScreen } from '../components/auth/LoginScreen';
 import { useSelector } from 'react-redux';
+import { AdminRoutes } from './AdminRoutes';
+import { AdminAllRoutes } from './AdminAllRoutes';
 
 
 export const AppRouter = () => {
 
-    const { logged } = useSelector(state => state.auth)
+    const { logged, admin } = useSelector(state => state.auth)
 
     return (
         <div>
@@ -32,6 +34,12 @@ export const AppRouter = () => {
                             path="/"
                             component={ DashboardRoutes }
                             isLogged={ logged }
+                        />
+                        <AdminRoutes
+                            path="/"
+                            component={ AdminAllRoutes }
+                            isLogged={ logged }
+                            isAdmin={ admin }
                         />
 
                         <Redirect to="/login" />

@@ -1,9 +1,50 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { DashboarCard } from './DashboarCard';
 
 export const Dashboard = () => {
+
+    const { admin } = useSelector(state => state.auth)
+
     return (
         <div className="container">
-            <img src="https://cnnespanol.cnn.com/wp-content/uploads/2019/12/mejores-imagenes-del-ancc83o-noticias-2019-galeria10.jpg?quality=100&strip=info&w=320&h=240&crop=1" alt=""/>
+            <div className="card__container">
+                {
+                    admin &&
+                    <DashboarCard
+                    icon={<i className="fas fa-cash-register"></i>}
+                    path='/register'
+                    color='card__clean'
+                    />
+                }
+                <DashboarCard
+                    icon={<i className="fas fa-users"></i>}
+                    path='/users'
+                    color='card__clean'
+                />
+                {
+                    admin &&
+                    <DashboarCard
+                    icon={<i className="far fa-handshake"></i>}
+                    path='/custumers'
+                    color='card__clean'
+                    />
+                }
+                <DashboarCard
+                    icon={<i className="far fa-calendar-alt"></i>}
+                    path='/calendar'
+                    color='card__clean'
+                />
+                {
+                    admin &&
+                    <DashboarCard
+                    icon={<i className="fas fa-tools"></i>}
+                    path='/admin'
+                    color='card__clean'
+                    />
+                }
+            </div>
         </div>
     )
 }

@@ -1,0 +1,13 @@
+.navbar-menu {
+
+    transition: all .4s ease-in-out;
+    
+}
+
+
+
+.navbar-menu.is-active {
+    position: absolute;   /* or float: left; width: 100%;*/
+    left: 0;
+    right: 0;
+}

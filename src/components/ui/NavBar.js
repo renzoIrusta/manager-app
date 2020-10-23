@@ -13,40 +13,41 @@ export const NavBar = () => {
     const dispatch = useDispatch();
 
     const { dashboardModal } = useSelector(state => state.ui);
+    const { admin } = useSelector(state => state.auth);
 
     const handleDashboardModal = () => {
-        ( !dashboardModal )
-            ? dispatch( uiOpenNavbar() )
-            : dispatch( uiCloseNavbar() )
+        (!dashboardModal)
+            ? dispatch(uiOpenNavbar())
+            : dispatch(uiCloseNavbar())
     };
 
     const handleLinkClick = () => {
-        dashboardModal && dispatch( uiCloseNavbar() )
+        dashboardModal && dispatch(uiCloseNavbar())
     };
 
     const handleLogout = () => {
-        dashboardModal && dispatch( uiCloseNavbar() )
-        dispatch( authLogout() )
+        dashboardModal && dispatch(uiCloseNavbar())
+        dispatch(authLogout())
     }
 
     return (
         <nav className="navbar is-success" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
 
-                <Link 
-                className="navbar-item"
-                onClick={ handleLinkClick }
-                to="/"
+                <Link
+                    className="navbar-item"
+                    onClick={handleLinkClick}
+                    to="/"
                 >
                     <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28" />
                 </Link>
 
-                <span 
-                role="button" 
-                className={ `navbar-burger ${ dashboardModal && 'is-active' }` } aria-label="menu" 
-                aria-expanded="false" 
-                data-target="navbar-app"
-                onClick={ handleDashboardModal }
+                <span
+                    role="button"
+                    className={`navbar-burger ${dashboardModal && 'is-active'}`} aria-label="menu"
+                    aria-expanded="false"
+                    data-target="navbar-app"
+                    onClick={handleDashboardModal}
                 >
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -55,31 +56,61 @@ export const NavBar = () => {
 
             </div>
 
-            <div className={`navbar-menu ${ dashboardModal && 'is-active' }`} id="navbar-app">
+            <div className={`navbar-menu animate__animated animate__fadeIn ${dashboardModal && 'is-active'}`} id="navbar-app">
 
                 <div className='navbar-end'>
-                    <Link 
-                    className="navbar-item" 
-                    onClick={ handleLinkClick }
-                    to="/custumers"
+                    {
+                        admin &&
+                        <Link
+                            className="navbar-item"
+                            onClick={handleLinkClick}
+                            to="/"
+                        >
+                            Caja
+                        </Link>
+                    }
+                    <Link
+                        className="navbar-item"
+                        onClick={handleLinkClick}
+                        to="/users"
                     >
-                        Clientes
+                        Colaboradores
                     </Link>
-                    <Link 
-                    className="navbar-item"
-                    onClick={ handleLinkClick }
-                    to="/calendar"
+                    {
+                        admin &&
+                        <Link
+                            className="navbar-item"
+                            onClick={handleLinkClick}
+                            to="/custumers"
+                        >
+                            Clientes
+                        </Link>
+                    }
+                    <Link
+                        className="navbar-item"
+                        onClick={handleLinkClick}
+                        to="/calendar"
                     >
                         Agenda
                     </Link>
+                    {
+                        admin &&
+                        <Link
+                            className="navbar-item"
+                            onClick={handleLinkClick}
+                            to="/calendar"
+                        >
+                            Admin
+                        </Link>
+                    }
                 </div>
 
                 <div className="navbar-end">
                     <div className="navbar-item">
                         <div className="buttons">
-                            <button 
-                            className="button is-link is-outlined"
-                            onClick={ handleLogout }
+                            <button
+                                className="button is-link is-outlined"
+                                onClick={handleLogout}
                             >
                                 Salir
                             </button>

@@ -25,7 +25,6 @@ export const RegisterForm = () => {
     const { register, errors, handleSubmit } = useForm();
 
     const handleChange = (e) => {
-        console.log(e.target.files[0])
         if (e.target.files[0]){
             setFile(e.target.files[0])
         }

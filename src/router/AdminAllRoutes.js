@@ -10,14 +10,16 @@ import { UsersScreen } from '../components/users/UsersScreen';
 
 
 
-export const DashboardRoutes = () => {
+export const AdminAllRoutes = () => {
     return (
         <>
-            <NavBar />
+         <NavBar />
             <div>
                 <Switch>
                     <Route exact path="/" component={ Dashboard } />
+                    <Route exact path="/custumers" component={ CustumersScreen } />
                     <Route exact path="/calendar" component={ CalendarScreen } />
+                    <Route exact path="/users/register" component={ RegisterScreen } />
                     <Route exact path="/users" component={ UsersScreen } />
 
                     <Redirect to="/" />

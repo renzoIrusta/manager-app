@@ -1,7 +1,7 @@
 import React from 'react'
 import { UserMediaCard } from './UserMediaCard'
 
-export const UserCard = ({ photoUrl, name, email, phone }) => {
+export const UserCard = ({ photoUrl, name, email, phone, color }) => {
     return (
             <div className="card card__size mb-4">
                 <div className="card-image">
@@ -9,19 +9,30 @@ export const UserCard = ({ photoUrl, name, email, phone }) => {
                         <img src={ photoUrl } alt="imagen" />
                     </figure>
                 </div>
-                <div className="card-content">
+                <div 
+                className="card-content"
+                >
                             <UserMediaCard 
-                            icon= {<i className="far fa-user"></i>}
+                            icon= {<i 
+                                className="far fa-user"
+                                style={color && {color: `${color}`}}
+                            ></i>}
                             className= "title is-4"
                             content={ name }
                             />
                             <UserMediaCard 
-                            icon= {<i className="far fa-envelope"></i>}
+                            icon= {<i 
+                                className="far fa-envelope"
+                                style={color && {color: `${color}`}}
+                                ></i>}
                             className= "subtitle is-4"
                             content={email}
                             />
                             <UserMediaCard 
-                            icon={ <i className="fas fa-mobile-alt"></i> }
+                            icon={ <i 
+                                className="fas fa-mobile-alt"
+                                style={color && {color: `${color}`}}
+                                ></i> }
                             className= "subtitle is-4"
                             content={ phone }
                             />             
