@@ -36,6 +36,11 @@ export const Dashboard = () => {
                     path='/calendar'
                     color='card__clean'
                 />
+                <DashboarCard
+                    icon={<i className="fas fa-clipboard-list"></i>}
+                    path='/todo'
+                    color='card__clean'
+                />
                 {
                     admin &&
                     <DashboarCard

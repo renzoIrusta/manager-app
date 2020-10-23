@@ -93,6 +93,13 @@ export const NavBar = () => {
                     >
                         Agenda
                     </Link>
+                    <Link
+                        className="navbar-item"
+                        onClick={handleLinkClick}
+                        to="/todo"
+                    >
+                        Tareas
+                    </Link>
                     {
                         admin &&
                         <Link
