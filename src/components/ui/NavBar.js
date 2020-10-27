@@ -44,7 +44,8 @@ export const NavBar = () => {
 
                 <span
                     role="button"
-                    className={`navbar-burger ${dashboardModal && 'is-active'}`} aria-label="menu"
+                    className={`navbar-burger ${dashboardModal && 'is-active'}`} 
+                    aria-label="menu"
                     aria-expanded="false"
                     data-target="navbar-app"
                     onClick={handleDashboardModal}
@@ -64,7 +65,7 @@ export const NavBar = () => {
                         <Link
                             className="navbar-item"
                             onClick={handleLinkClick}
-                            to="/"
+                            to="/register"
                         >
                             Caja
                         </Link>
@@ -105,7 +106,7 @@ export const NavBar = () => {
                         <Link
                             className="navbar-item"
                             onClick={handleLinkClick}
-                            to="/calendar"
+                            to="/admin"
                         >
                             Admin
                         </Link>

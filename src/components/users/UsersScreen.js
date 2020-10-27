@@ -10,15 +10,14 @@ export const UsersScreen = () => {
 
     const bringData = async () => {
 
-        const data = await loadData('users')
-        setData(data)
+        const newdata = await loadData('users')
+        setData(newdata)
+        
     }
 
     useEffect(() => {
         bringData()
     }, [setData])
-
-    console.log(data);
 
     return (
         <div className="container p-5">
