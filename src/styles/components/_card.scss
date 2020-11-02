@@ -2,7 +2,7 @@
 .card__size {
     min-width: 300px !important; 
     max-width: 350px !important;
-    box-shadow: 10px 10px 42px -6px rgba(0,0,0,0.75) !important;
+    box-shadow: 10px 10px 12px -4px rgba(0,0,0,0.75) !important;
 }
 
 .card__content {
@@ -29,7 +29,7 @@
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    box-shadow: 10px 10px 42px -6px rgba(0,0,0,0.75) !important;
+    box-shadow: 10px 10px 12px -4px rgba(0,0,0,0.75) !important;
     border-radius: 5px;
     
     &:hover{

@@ -18,7 +18,7 @@ export const AppRouter = () => {
     const { logged } = useSelector(state => state.auth)
 
     return (
-        <div>
+        <div className="pt-6">
             <Router>
                 <div>
                     <Switch>

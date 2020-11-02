@@ -1,7 +1,21 @@
+
 html, body {
     background-color: $first !important;
-    height: 100vh;
+    height: 100%;
 }
+
+.back-calendar-screen {
+    height: 100%;
+}
+
+.calendar-container {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background-color: white;
+    padding-top: 2em;
+}
+
 
 .custom-container {
     align-items: center;

@@ -9,8 +9,7 @@ export const DashboarCard = ({ icon, color, path }) => {
         to={path}
         >
             <div
-            role="button"
-            className={`card__dashcard ripple py-3 ${ color }`}
+            className={`card__dashcard py-3 ${ color }`}
             >
                 <p className='card__icon'>{icon}</p>
             </div>

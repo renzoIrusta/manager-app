@@ -31,7 +31,7 @@ export const NavBar = () => {
     }
 
     return (
-        <nav className="navbar is-success" role="navigation" aria-label="main navigation">
+        <nav className="navbar is-success is-fixed-top" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">
 
                 <Link
