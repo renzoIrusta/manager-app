@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const PhoneInput = ({ errors, register }) => {
+export const PhoneInput = ({ errors, register, textColor }) => {
     return (
         <div className="field mt-5">
-            <label className="label has-text-light">Teléfono</label>
+            <label className={`label ${ textColor || 'has-text-light'}`}>Teléfono</label>
             <div className="control has-icons-right">
                 <input
                     autoComplete="off"

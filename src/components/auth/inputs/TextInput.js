@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const TextInput = ({ name, label, errors, register }) => {
+export const TextInput = ({ name, label, errors, register, textColor }) => {
     return (
         <div className="field mt-5">
-                <label className="label has-text-light">{label}</label>
+                <label className={`label ${ textColor || 'has-text-light'}`}>{label}</label>
                 <div className="control has-icons-right">
                     <input
                         autoComplete="off"
