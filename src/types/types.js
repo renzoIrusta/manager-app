@@ -7,7 +7,15 @@ export const types = {
 
     uiOpenNavbar : '[UI] Open navbar',
     uiCloseNavbar: '[UI] Close navbar',
+    uiOpenModal: '[UI] Open modal',
+    uiCloseModal: '[UI] Close modal',
 
-    createUser   : '[Users] Create User'
+    createUser   : '[Users] Create User',
+
+    eventSetActive: '[event] Set active',
+    eventAddNew: '[event] Add new',
+    clearActiveEvent: '[event] Clear active event',
+    eventUpdate: '[event] Event updates',
+    eventDelete: '[event] Event delete'
 
 }

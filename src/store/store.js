@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
 import { authReducer } from '../reducers/authReducer';
+import { calendarReducer } from '../reducers/calendarReducer';
 import { uiReducer } from '../reducers/uiReducer';
 import { usersReducer } from '../reducers/usersReducer';
 
@@ -11,6 +12,7 @@ const reducers = combineReducers({
     auth: authReducer,
     ui: uiReducer,
     users: usersReducer,
+    calendar: calendarReducer,
 });
 
 export const store = createStore(

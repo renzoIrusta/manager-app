@@ -7,3 +7,11 @@ export const uiOpenNavbar = () => ({
 export const uiCloseNavbar = () => ({
     type: types.uiCloseNavbar
 })
+
+export const uiOpenModal = () => ({
+    type: types.uiOpenModal
+})
+
+export const uiCloseModal = () => ({
+    type: types.uiCloseModal
+})
