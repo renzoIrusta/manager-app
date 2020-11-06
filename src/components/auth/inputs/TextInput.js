@@ -9,7 +9,7 @@ export const TextInput = ({ name, label, errors, register, textColor }) => {
                         autoComplete="off"
                         className={`input ${errors[name] && 'is-danger'}`}
                         name={name}
-                        placeholder={ `Ingresa tu ${label.toLowerCase()}` }
+                        placeholder={ `Ingresa ${label.toLowerCase()}` }
                         type="text"
                         ref={
                             register({

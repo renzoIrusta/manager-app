@@ -17,8 +17,12 @@ export const PhoneInput = ({ errors, register, textColor }) => {
                                 value: true,
                                 message: 'El campo teléfono no puede estar vacío.'
                             },
-                            validate: {
-                                noSpace: value => !value.includes(' ')
+                            // validate: {
+                            //     noSpace: value => !value.includes(' ')
+                            // },
+                            pattern: {
+                                value: /^[0-9]+$/,
+                                message: 'Ingresa sólo números y no dejes espacios vacíos.'
                             }
                         })
                     }

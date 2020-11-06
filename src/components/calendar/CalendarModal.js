@@ -9,13 +9,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { TextInput } from '../auth/inputs/TextInput';
 import { PhoneInput } from '../auth/inputs/PhoneInput';
+import { TextArea } from '../auth/inputs/TextArea';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const endInit = now.clone().add(1, 'hours');
 
 const initEvent = {
-    title: '',
-    notes: '',
+    name: '',
+    phone: '',
+    services: '',
     start: now.toDate(),
     end: endInit.toDate()
 }
@@ -28,7 +30,7 @@ export const CalendarModal = () => {
 
     const [formValues, setFormValues] = useState(initEvent);
 
-    const { notes, title, start, end } = formValues;
+    const { start, end } = formValues;
 
     const dispatch = useDispatch();
 
@@ -54,11 +56,14 @@ export const CalendarModal = () => {
     }
 
     const onSubmit = (data, e) => {
-
+        console.log(data);
+        console.log(e);
+        console.log(start);
+        console.log(end);
     }
 
     return (
-        <form onSubmit={ handleSubmit(onSubmit) }>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className={`modal animate__animated ${modalState && 'is-active animate__fadeIn'}`}>
                 <div
                     className="modal-background"
@@ -97,15 +102,8 @@ export const CalendarModal = () => {
                         <TextInput
                             errors={errors}
                             register={register}
-                            name="firstName"
-                            label="Nombre"
-                            textColor="has-text-grey-dark"
-                        />
-                        <TextInput
-                            errors={errors}
-                            register={register}
-                            name="lastName"
-                            label="Apellido"
+                            name="name"
+                            label="Nombre completo"
                             textColor="has-text-grey-dark"
                         />
                         <PhoneInput
@@ -113,12 +111,19 @@ export const CalendarModal = () => {
                             register={register}
                             textColor="has-text-grey-dark"
                         />
+                        <TextArea 
+                            errors={errors}
+                            register={register}
+                            label="Servicio"
+                            textColor="has-text-grey-dark"
+                        />
                     </section>
                     <footer className="modal-card-foot has-background-grey-light">
                         <button
-                         className="button is-link"
-                         type="submit"
-                         >Guardar</button>
+                            className="button is-link"
+                            type="submit"
+                            disabled={(errors.name) ? true : (errors.phone) ? true : (errors.textarea) ? true : false}
+                        >Guardar</button>
                         <button
                             className="button is-danger"
                             onClick={closeModal}
