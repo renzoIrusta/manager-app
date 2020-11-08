@@ -13,7 +13,7 @@ export const loadData = async ( path ) => {
     });
 
     return data;
-
+    
 }
 
 export const configInfo = async( uid, idData ) => {

@@ -25,6 +25,7 @@ const initEvent = {
 export const CalendarModal = () => {
 
     const { modalState } = useSelector(state => state.ui);
+    const users = useSelector(state => state.users);
 
     const { register, errors, handleSubmit } = useForm();
 
@@ -56,10 +57,10 @@ export const CalendarModal = () => {
     }
 
     const onSubmit = (data, e) => {
-        console.log(data);
-        console.log(e);
-        console.log(start);
-        console.log(end);
+        let datas = JSON.parse(data.pros);
+        console.log(datas);
+        // console.log(start);
+        // console.log(end);
     }
 
     return (
@@ -111,12 +112,27 @@ export const CalendarModal = () => {
                             register={register}
                             textColor="has-text-grey-dark"
                         />
-                        <TextArea 
+                        <TextArea
                             errors={errors}
                             register={register}
                             label="Servicio"
                             textColor="has-text-grey-dark"
                         />
+                        <div className="select">
+                            <select 
+                            name="pros"
+                            ref={register}
+                            >
+                                {users.map( user => (
+                                    <option
+                                    key={user.idData}
+                                    value={
+                                        `{"nombre":"${user.data.name}", "color":"${user.data.color}"}`
+                                    }
+                                    >{user.data.name}</option>
+                                 ) )}
+                            </select>
+                        </div>
                     </section>
                     <footer className="modal-card-foot has-background-grey-light">
                         <button

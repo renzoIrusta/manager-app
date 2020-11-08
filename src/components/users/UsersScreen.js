@@ -1,30 +1,17 @@
 import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { loadData } from '../../helpers/loadInfo'
+import { useSelector } from 'react-redux'
 import { UserCard } from './UserCard'
 
 export const UsersScreen = () => {
 
-    const [data, setData] = useState([])
-
-    const bringData = async () => {
-
-        const newdata = await loadData('users')
-        setData(newdata)
-        
-    }
-
-    useEffect(() => {
-        bringData()
-    }, [setData])
+    const users = useSelector(state => state.users)
 
     return (
         <div className="container p-5">
             <h1 className="title has-text-white">Users Screen</h1>
             <div className="custom-container">
                 {
-                    data.map(user => (
+                    users.map(user => (
 
                         <UserCard
                             key={user.idData}

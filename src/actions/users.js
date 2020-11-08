@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import { db, storage } from "../firebase/config";
+import { loadData } from "../helpers/loadInfo";
 import { types } from "../types/types";
 
 
@@ -76,4 +77,23 @@ export const addUserToStore = ( {email, name, lastName, color, phone, photoUrl},
         photoUrl: photoUrl
     }
 })
+
+export const loadUsers = ( data ) => ({
+    type: types.loadUsers,
+    payload: data
+})
+
+export const fetchUsers = () => {
+
+    return async ( dispatch ) => {
+        try {
+            const users = await loadData('users');
+            dispatch( loadUsers( users ) )
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+
+}
 
