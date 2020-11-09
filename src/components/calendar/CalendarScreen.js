@@ -12,6 +12,7 @@ import 'moment/locale/es';
 import { messages } from '../../helpers/calendar-messages-es';
 import { uiOpenModal } from '../../actions/ui';
 import { AddNewFab } from '../ui/AddNewFab';
+import { eventSetActive } from '../../actions/calendar';
 
 moment.locale('es')
 
@@ -26,13 +27,29 @@ export const CalendarScreen = () => {
     const dispatch = useDispatch();
 
     const onSelectEvent = (e) => {
-        // dispatch(eventSetActive(e))
+        dispatch(eventSetActive(e))
         dispatch(uiOpenModal())
     }
 
     const onViewChange = (e) => {
         setLastView(e);
         localStorage.setItem('lastView', e);
+    }
+
+    const eventStyleGetter = (event, start, end, isSelected) => {
+        // console.log(event, start, end, isSelected);
+
+        const style = {
+            backgroundColor: event.bgcolor,
+            borderRadius: '0px',
+            opacity: 0.8,
+            display: 'block',
+            color: 'white'
+        }
+
+        return {
+            style
+        }
     }
 
     return (
@@ -45,6 +62,7 @@ export const CalendarScreen = () => {
                 onSelectEvent={onSelectEvent}
                 endAccessor="end"
                 views={['month', 'day', 'agenda']}
+                eventPropGetter={eventStyleGetter}
                 onView={onViewChange}
                 view={lastView}
                 components={{

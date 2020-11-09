@@ -2,12 +2,12 @@ import React from 'react'
 
 export const CalendarEvent = ( {event} ) => {
 
-    const { title, user } = event;
+    const { title, profesional } = event;
 
     return (
         <div>
             <strong>{ title }</strong>
-            <span> - { user.name }</span>
+            <span> - { profesional }</span>
         </div>
     )
 }

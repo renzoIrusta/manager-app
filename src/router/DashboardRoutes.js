@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { AdminScreen } from '../components/admin/AdminScreen';
-// import { RegisterScreen } from '../components/auth/RegisterScreen';
+import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { CashRegisterScreen } from '../components/cash-register/CashRegisterScreen';
@@ -26,6 +26,7 @@ export const DashboardRoutes = () => {
                     <Route exact path="/" component={ Dashboard } />
                     <Route exact path="/calendar" component={ CalendarScreen } />
                     <Route exact path="/users" component={ UsersScreen } />
+                    <Route exact path="/users/register" component={ RegisterScreen } />
                     <Route exact path="/todo" component={ ToDoScreen } />
                     {
                         admin &&

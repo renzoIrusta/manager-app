@@ -1,20 +1,7 @@
-import moment from 'moment';
 import { types } from '../types/types';
 
 const initialState = {
-    events: [{
-        id: new Date().getTime(),
-        title: 'Cumpleaños de la jefecita',
-        start: moment().toDate(),
-        end: moment().add(2, 'hours').toDate(),
-        bgcolor: '#fafafa',
-        notes: 'comprar el pastel',
-        user: {
-            id: '123',
-            name: 'Renzo'
-        }
-    }
-    ],
+    events: [],
     activeEvent: null
 }
 

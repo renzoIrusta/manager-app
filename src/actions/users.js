@@ -55,7 +55,7 @@ export const userCreateWithPhoto = ( uid, email, firstName, lastName, color, pho
                     await db.collection('users').doc(`${uid}`).set({data: newUser})
 
                     Swal.fire('Perfil registrado', firstName, 'success')
-
+                    console.log(newUser);
                     dispatch( addUserToStore( newUser, uid ) ) 
                 } ) 
             }
@@ -68,13 +68,16 @@ export const userCreateWithPhoto = ( uid, email, firstName, lastName, color, pho
 export const addUserToStore = ( {email, name, lastName, color, phone, photoUrl}, uid ) => ({
     type: types.createUser,
     payload: {
-        uid: uid,
-        name: name,
-        lastName: lastName,
-        email: email,
-        color: color,
-        phone: phone,
-        photoUrl: photoUrl
+        idData: uid,
+        data: {
+            name: name,
+            lastName: lastName,
+            email: email,
+            color: color,
+            phone: phone,
+            photoUrl: photoUrl 
+        }
+        
     }
 })
 

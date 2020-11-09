@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TextArea = ({ label, errors, register, textColor }) => {
+export const TextArea = ({ label, errors, register, textColor, value, handleInputChange }) => {
     return (
         <div className="field mt-5">
             <label className={`label ${textColor || 'has-text-light'}`}>{label}</label>
@@ -10,6 +10,8 @@ export const TextArea = ({ label, errors, register, textColor }) => {
                     className={`textarea has-fixed-size ${errors.textarea && 'is-danger'}`}
                     name="textarea"
                     placeholder={`Ingresa ${label.toLowerCase()}`}
+                    value={ value }
+                    onChange={ handleInputChange }
                     ref={
                         register({
                             required: {

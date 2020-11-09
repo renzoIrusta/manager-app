@@ -1,4 +1,4 @@
-const { types } = require("../types/types");
+import { types } from "../types/types";
 import Swal from "sweetalert2";
 import { db } from "../firebase/config";
 
@@ -29,18 +29,14 @@ export const calendarCreateEvent = ( event ) => {
    
     return async ( dispatch ) => {
 
-        const newUser = {
-            name: firstName,
-            lastName: lastName,
-            email: email,
-            color: color,
-            phone: phone, 
+        const docRef = await db.collection('calendar').add(event)
+
+        Swal.fire('Evento creado', event.name, 'success')
+        const newEvent = {
+            id: docRef.id,
+            ...event
         }
-
-        await db.collection('users').doc(`${uid}`).set({data: newUser})
-        Swal.fire('Perfil registrado', firstName, 'success')
-        dispatch( addUserToStore( newUser, uid ) )
-
+        dispatch( eventAddNew( newEvent ) )
     }
     
 }

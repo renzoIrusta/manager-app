@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const TextInput = ({ name, label, errors, register, textColor }) => {
+export const TextInput = ({ name, label, errors, register, textColor, value, handleInputChange }) => {
     return (
         <div className="field mt-5">
                 <label className={`label ${ textColor || 'has-text-light'}`}>{label}</label>
@@ -11,6 +11,8 @@ export const TextInput = ({ name, label, errors, register, textColor }) => {
                         name={name}
                         placeholder={ `Ingresa ${label.toLowerCase()}` }
                         type="text"
+                        value={ value }
+                        onChange={ handleInputChange }
                         ref={
                             register({
                                 required: {
