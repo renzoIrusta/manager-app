@@ -11,6 +11,7 @@ import 'moment/locale/es';
 
 import { messages } from '../../helpers/calendar-messages-es';
 import { uiOpenModal } from '../../actions/ui';
+import { AddNewFab } from '../ui/AddNewFab';
 
 moment.locale('es')
 
@@ -50,7 +51,7 @@ export const CalendarScreen = () => {
                     event: CalendarEvent
                 }}
             />
-
+            <AddNewFab />
             <CalendarModal />
         </div>
     )

@@ -12,7 +12,7 @@ import { PhoneInput } from '../auth/inputs/PhoneInput';
 import { TextArea } from '../auth/inputs/TextArea';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
-const endInit = now.clone().add(1, 'hours');
+const endInit = now.clone().add(.5, 'hours');
 
 const initEvent = {
     name: '',
@@ -57,10 +57,11 @@ export const CalendarModal = () => {
     }
 
     const onSubmit = (data, e) => {
-        let datas = JSON.parse(data.pros);
-        console.log(datas);
-        // console.log(start);
-        // console.log(end);
+        // let datas = JSON.parse(data.pros);
+        // console.log(datas);
+        console.log(data);
+        console.log(start);
+        console.log(end);
     }
 
     return (
@@ -94,9 +95,9 @@ export const CalendarModal = () => {
                             <label className="label">Fecha y hora fin</label>
                             <div className="control">
                                 <DateTimePicker
-                                    onChange={handleEndDate}
-                                    minDate={start}
-                                    value={end}
+                                    onChange={ handleEndDate }
+                                    minDate={ start }
+                                    value={ end }
                                 />
                             </div>
                         </div>
@@ -118,35 +119,38 @@ export const CalendarModal = () => {
                             label="Servicio"
                             textColor="has-text-grey-dark"
                         />
-                        <div className="select">
-                            <select 
-                            name="pros"
-                            ref={register}
-                            >
-                                {users.map( user => (
-                                    <option
-                                    key={user.idData}
-                                    value={
-                                        `{"nombre":"${user.data.name}", "color":"${user.data.color}"}`
-                                    }
-                                    >{user.data.name}</option>
-                                 ) )}
-                            </select>
-                        </div>
+                        <div className="field mt-5">
+                            <label className="label">Elegir un profesional</label>
+                            <div className="select is-fullwidth">
+                                <select
+                                    name="pros"
+                                    ref={register}
+                                >
+                                    {users.map(user => (
+                                        <option
+                                            key={user.idData}
+                                            value={
+                                                `{"nombre":"${user.data.name}", "color":"${user.data.color}"}`
+                                            }
+                                        >{user.data.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            </div>
                     </section>
-                    <footer className="modal-card-foot has-background-grey-light">
-                        <button
-                            className="button is-link"
-                            type="submit"
-                            disabled={(errors.name) ? true : (errors.phone) ? true : (errors.textarea) ? true : false}
-                        >Guardar</button>
-                        <button
-                            className="button is-danger"
-                            onClick={closeModal}
-                        >Cancelar</button>
-                    </footer>
+                        <footer className="modal-card-foot has-background-grey-light">
+                            <button
+                                className="button is-link"
+                                type="submit"
+                                disabled={(errors.name) ? true : (errors.phone) ? true : (errors.textarea) ? true : false}
+                            >Guardar</button>
+                            <button
+                                className="button is-danger"
+                                onClick={closeModal}
+                            >Cancelar</button>
+                        </footer>
                 </div>
-            </div>
+                </div>
         </form>
     )
 }
