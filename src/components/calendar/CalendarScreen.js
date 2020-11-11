@@ -12,7 +12,9 @@ import 'moment/locale/es';
 import { messages } from '../../helpers/calendar-messages-es';
 import { uiOpenModal } from '../../actions/ui';
 import { AddNewFab } from '../ui/AddNewFab';
-import { eventSetActive, fetchEvents } from '../../actions/calendar';
+import { downloadEvents, eventSetActive } from '../../actions/calendar';
+import { db } from '../../firebase/config';
+import { prepareDate } from '../../helpers/prepareDate';
 
 moment.locale('es')
 
@@ -22,12 +24,21 @@ export const CalendarScreen = () => {
 
     const [lastView, setLastView] = useState(localStorage.getItem('lastView') || 'month')
 
-    const { events } = useSelector( state => state.calendar )
+    const { events } = useSelector(state => state.calendar)
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch( fetchEvents() )
+        
+        db.collection("calendar").onSnapshot((querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id });
+            });
+            const docsDates = prepareDate( docs )
+            dispatch(downloadEvents( docsDates ))
+        });
+    
     }, [dispatch])
 
     const onSelectEvent = (e) => {
@@ -59,9 +70,9 @@ export const CalendarScreen = () => {
     return (
         <div className='calendar-container'>
             <Calendar
-                messages={ messages }
-                localizer={ localizer }
-                events={ events }
+                messages={messages}
+                localizer={localizer}
+                events={events}
                 startAccessor="start"
                 onSelectEvent={onSelectEvent}
                 endAccessor="end"
