@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import { db, storage } from "../firebase/config";
-import { loadData } from "../helpers/loadInfo";
+import { loadData } from "../helpers/crudData";
 import { types } from "../types/types";
 
 
@@ -68,7 +68,7 @@ export const userCreateWithPhoto = ( uid, email, firstName, lastName, color, pho
 export const addUserToStore = ( {email, name, lastName, color, phone, photoUrl}, uid ) => ({
     type: types.createUser,
     payload: {
-        idData: uid,
+        id: uid,
         data: {
             name: name,
             lastName: lastName,

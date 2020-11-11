@@ -10,7 +10,6 @@ export const usersReducer = ( state= initialState, action ) => {
             return action.payload
             
         case types.createUser:
-            console.log(action.payload);
             return [ action.payload, ...state ]
 
         default:

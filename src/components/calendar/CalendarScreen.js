@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 
@@ -12,7 +12,7 @@ import 'moment/locale/es';
 import { messages } from '../../helpers/calendar-messages-es';
 import { uiOpenModal } from '../../actions/ui';
 import { AddNewFab } from '../ui/AddNewFab';
-import { eventSetActive } from '../../actions/calendar';
+import { eventSetActive, fetchEvents } from '../../actions/calendar';
 
 moment.locale('es')
 
@@ -25,6 +25,10 @@ export const CalendarScreen = () => {
     const { events } = useSelector( state => state.calendar )
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch( fetchEvents() )
+    }, [dispatch])
 
     const onSelectEvent = (e) => {
         dispatch(eventSetActive(e))

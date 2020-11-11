@@ -8,6 +8,11 @@ const initialState = {
 export const calendarReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case types.downloadEvents:
+            return {
+                ...state,
+                events: [ ...action.payload ]
+            }
         case types.eventSetActive:
             return {
                 ...state,
@@ -29,7 +34,8 @@ export const calendarReducer = (state = initialState, action) => {
                 ...state,
                 events: state.events.map(
                     event => (event.id === action.payload.id) ? action.payload : event
-                )
+                ),
+                activeEvent: null
             }
 
         case types.eventDelete:

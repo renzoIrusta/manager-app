@@ -10,8 +10,7 @@ export const TextArea = ({ label, errors, register, textColor, value, handleInpu
                     className={`textarea has-fixed-size ${errors.textarea && 'is-danger'}`}
                     name="textarea"
                     placeholder={`Ingresa ${label.toLowerCase()}`}
-                    value={ value }
-                    onChange={ handleInputChange }
+                    defaultValue={ value }
                     ref={
                         register({
                             required: {

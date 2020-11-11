@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PhoneInput = ({ errors, register, textColor, value, handleInputChange }) => {
+export const PhoneInput = ({ errors, register, textColor, value }) => {
     return (
         <div className="field mt-5">
             <label className={`label ${ textColor || 'has-text-light'}`}>Teléfono</label>
@@ -11,8 +11,7 @@ export const PhoneInput = ({ errors, register, textColor, value, handleInputChan
                     name="phone"
                     placeholder="Ingresa un teléfono"
                     type="tel"
-                    value={ value }
-                    onChange={ handleInputChange }
+                    defaultValue={ value }
                     ref={
                         register({
                             required: {

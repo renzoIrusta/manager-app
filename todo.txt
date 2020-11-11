@@ -4,6 +4,6 @@ Hacer página de clientes.
 Hacer vista de administrador: aquí tiene que estar la vista para agregar usuarios.
 Agregar sweet alert advirtiendo que no se subió foto
 Seleccionar elemento para que cambie el color en el dashboard
-Pensar si es necesario pasarle varios datos con el select del usuario
 
 Agregar buscador en modal calendario. Terminar de agregar el estado de los ingresos en el calendario. Recordar que solo el manejo de las fechas necesita el useState, el resto viene con el reack-hook-form
+

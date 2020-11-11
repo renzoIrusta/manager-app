@@ -10,7 +10,7 @@ import { useForm } from 'react-hook-form';
 import { TextInput } from '../auth/inputs/TextInput';
 import { PhoneInput } from '../auth/inputs/PhoneInput';
 import { TextArea } from '../auth/inputs/TextArea';
-import { calendarCreateEvent, clearActiveEvent } from '../../actions/calendar';
+import { calendarCreateEvent, calendarDeleteEvent, calendarUpdateEvent, clearActiveEvent } from '../../actions/calendar';
 
 const now = moment().minutes(0).seconds(0).add(1, 'hours');
 const endInit = now.clone().add(.5, 'hours');
@@ -25,7 +25,7 @@ const initEvent = {
 }
 
 export const CalendarModal = () => {
-    
+
     const dispatch = useDispatch();
 
     const { modalState } = useSelector(state => state.ui);
@@ -38,20 +38,20 @@ export const CalendarModal = () => {
     const [formValues, setFormValues] = useState(initEvent);
 
     const { start, end, name, phone, textarea, profesional } = formValues;
-    
+
     useEffect(() => {
 
         if (activeEvent) {
             setFormValues(activeEvent)
         } else {
-            setFormValues( initEvent )
+            setFormValues(initEvent)
         }
 
     }, [activeEvent, setFormValues])
 
     const closeModal = () => {
         dispatch(uiCloseModal());
-        dispatch( clearActiveEvent() );
+        dispatch(clearActiveEvent());
         setFormValues(initEvent);
         reset();
     }
@@ -72,15 +72,13 @@ export const CalendarModal = () => {
         })
     }
 
-    const handleInputChange = ({ target }) => {
-        setFormValues({
-            ...formValues,
-            [target.name]: target.value
-        })
+    const handleDelete = () => {
+       dispatch( calendarDeleteEvent( activeEvent.id ) )
+       dispatch(uiCloseModal());
     }
 
     const onSubmit = (data, e) => {
-        
+
         const userData = JSON.parse(data.pros);
         delete data.pros
         const event = {
@@ -89,9 +87,15 @@ export const CalendarModal = () => {
             ...data,
             ...userData
         }
-        dispatch(calendarCreateEvent(event));
+
+        if (activeEvent) {
+            dispatch(calendarUpdateEvent(activeEvent.id, event))
+        } else {
+            dispatch(calendarCreateEvent(event));
+        }
+
         reset();
-        dispatch( uiCloseModal() );
+        dispatch(uiCloseModal());
     }
 
     return (
@@ -103,7 +107,7 @@ export const CalendarModal = () => {
             ></div>
             <div className="modal-card">
                 <header className="modal-card-head has-background-warning">
-                    <p className="modal-card-title">Crear nuevo turno</p>
+                    <p className="modal-card-title">{activeEvent ? 'Actualizar turno' : 'Crear turno'}</p>
                     <button
                         className="delete"
                         aria-label="close"
@@ -138,23 +142,20 @@ export const CalendarModal = () => {
                             name="name"
                             label="Nombre completo"
                             textColor="has-text-grey-dark"
-                            value={ name }
-                            handleInputChange={ handleInputChange }
+                            value={name}
                         />
                         <PhoneInput
                             errors={errors}
                             register={register}
                             textColor="has-text-grey-dark"
-                            value={ phone }
-                            handleInputChange={ handleInputChange }
+                            value={phone}
                         />
                         <TextArea
                             errors={errors}
                             register={register}
                             label="Servicio"
                             textColor="has-text-grey-dark"
-                            value={ textarea }
-                            handleInputChange={ handleInputChange }
+                            value={textarea}
                         />
                         <div className="field mt-5">
                             <label className="label">Elegir un profesional</label>
@@ -165,11 +166,11 @@ export const CalendarModal = () => {
                                 >
                                     {users.map(user => (
                                         <option
-                                            key={user.idData}
+                                            key={user.id}
                                             value={
                                                 `{"profesional":"${user.data.name}", "bgcolor":"${user.data.color}"}`
                                             }
-                                            selected={ user.data.name === profesional }
+                                            selected={user.data.name === profesional ? profesional : undefined}
                                         >{user.data.name}</option>
                                     ))}
                                 </select>
@@ -177,16 +178,32 @@ export const CalendarModal = () => {
                         </div>
                     </form>
                 </section>
-                <footer className="modal-card-foot has-background-grey-light">
-                    <button
-                        className="button is-link"
-                        onClick={handleSubmit(onSubmit)}
-                        disabled={(errors.name) ? true : (errors.phone) ? true : (errors.textarea) ? true : false}
-                    >Guardar</button>
-                    <button
-                        className="button is-danger"
-                        onClick={closeModal}
-                    >Cancelar</button>
+                <footer className="modal-card-foot has-background-grey-light is-justify-content-space-between">
+                    <div>
+                        <button
+                            className="button is-link has-text-white"
+                            onClick={handleSubmit(onSubmit)}
+                            disabled={(errors.name) ? true : (errors.phone) ? true : (errors.textarea) ? true : false}
+                        >
+                            { activeEvent ? 'Editar' : 'Crear' }
+                        </button>
+                        <button
+                            className="button is-dark"
+                            onClick={closeModal}
+                        >Cancelar</button>
+                    </div>
+                    <div>
+                        {
+                            activeEvent
+                            &&
+                            <button
+                                className="button is-danger"
+                                onClick={ handleDelete }
+                            >
+                                Eliminar
+                            </button>
+                        }
+                    </div>
                 </footer>
             </div>
         </div>
