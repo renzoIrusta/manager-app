@@ -99,7 +99,6 @@ export const CalendarModal = () => {
     }
 
     return (
-
         <div className={`modal animate__animated ${modalState && 'is-active animate__fadeIn'}`}>
             <div
                 className="modal-background"

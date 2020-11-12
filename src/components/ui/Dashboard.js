@@ -27,7 +27,7 @@ export const Dashboard = () => {
                     admin &&
                     <DashboarCard
                     icon={<i className="far fa-handshake"></i>}
-                    path='/custumers'
+                    path='/customers'
                     color='card__clean'
                     />
                 }

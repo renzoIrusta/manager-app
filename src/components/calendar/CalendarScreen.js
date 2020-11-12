@@ -29,7 +29,6 @@ export const CalendarScreen = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        
         db.collection("calendar").onSnapshot((querySnapshot) => {
             const docs = [];
             querySnapshot.forEach((doc) => {

@@ -18,6 +18,9 @@ export const types = {
     clearActiveEvent: '[event] Clear active event',
     eventUpdate: '[event] Event updates',
     eventDelete: '[event] Event delete',
-    downloadEvents: '[event] Download events'
+    downloadEvents: '[event] Download events',
+
+    customersFinded: '[customers] Finded',
+    customersClean: '[customers] Clean state',
 
 }

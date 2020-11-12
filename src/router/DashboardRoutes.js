@@ -6,7 +6,7 @@ import { RegisterScreen } from '../components/auth/RegisterScreen';
 
 import { CalendarScreen } from '../components/calendar/CalendarScreen';
 import { CashRegisterScreen } from '../components/cash-register/CashRegisterScreen';
-import { CustumersScreen } from '../components/customers/CustumersScreen';
+import { CustomersScreen } from '../components/customers/CustomersScreen';
 import { ToDoScreen } from '../components/to-do/ToDoScreen';
 import { Dashboard } from '../components/ui/Dashboard';
 import { NavBar } from '../components/ui/NavBar';
@@ -30,7 +30,7 @@ export const DashboardRoutes = () => {
                     <Route exact path="/todo" component={ ToDoScreen } />
                     {
                         admin &&
-                        <Route exact path="/custumers" component={ CustumersScreen } />
+                        <Route exact path="/customers" component={ CustomersScreen } />
                     }
                     {
                         admin &&

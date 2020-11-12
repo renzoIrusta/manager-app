@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 
 import { authReducer } from '../reducers/authReducer';
 import { calendarReducer } from '../reducers/calendarReducer';
+import { customersReducer } from '../reducers/customersReducer';
 import { uiReducer } from '../reducers/uiReducer';
 import { usersReducer } from '../reducers/usersReducer';
 
@@ -13,6 +14,7 @@ const reducers = combineReducers({
     ui: uiReducer,
     users: usersReducer,
     calendar: calendarReducer,
+    customers: customersReducer,
 });
 
 export const store = createStore(
