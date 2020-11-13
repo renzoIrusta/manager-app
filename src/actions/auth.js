@@ -32,9 +32,7 @@ export const startRegisterWithEmailPassword = ( {email, password, firstName, las
                dispatch (userCreateWithPhoto( user.uid, email, firstName, lastName, color, phone, file)) 
             } else {
                 dispatch(userCreate( user.uid, email, firstName, lastName, color, phone ))
-            }
-             
-                
+            }   
 
         })
         .catch( e => {

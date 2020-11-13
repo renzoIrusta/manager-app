@@ -24,7 +24,7 @@ export const calendarCreateEvent = ( event ) => {
     return async ( dispatch ) => {
 
         await db.collection('calendar').add(event)
-
+    
         Swal.fire('Evento creado', event.name, 'success')
 
     }

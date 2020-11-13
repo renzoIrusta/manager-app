@@ -57,7 +57,7 @@ export const NavBar = () => {
 
             </div>
 
-            <div className={`navbar-menu animate__animated animate__fadeIn ${dashboardModal && 'is-active'}`} id="navbar-app">
+            <div className={`navbar-menu ${dashboardModal && 'is-active animate__animated animate__fadeIn'}`} id="navbar-app">
 
                 <div className='navbar-end'>
                     {
@@ -82,7 +82,7 @@ export const NavBar = () => {
                         <Link
                             className="navbar-item"
                             onClick={handleLinkClick}
-                            to="/custumers"
+                            to="/customers"
                         >
                             Clientes
                         </Link>
