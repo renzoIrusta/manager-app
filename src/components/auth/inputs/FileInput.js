@@ -4,10 +4,10 @@ export const FileInput = ({ errors, register, handleChange, fileName }) => {
 
     return (
         <div className="field mt-5">
-            <label className="label has-text-light">Sube una imagen</label>
+            <label className="label has-text-light">Subí una imagen</label>
             <div className="control has-icons-right">
 
-                <div className="file has-name">
+                <div className="file has-name is-fullwidth">
                     <label className="file-label">
                         <input 
                         className="file-input" 

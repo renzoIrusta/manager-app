@@ -1,8 +1,8 @@
 @import '../../node_modules/bulma/sass/utilities/initial-variables.sass';
 @import '../../node_modules/bulma/sass/utilities/functions.sass';
 
-$first: #3F6452;
-$second: #857F74;
+$first: #525252;
+$second: #808080;
 $third: #82D173;
 $fourth: #65AFFF;
 $fifth: #D9DBF1;
@@ -13,6 +13,12 @@ $primary: $first;
 $success: $second;
 $link: $third;
 $info: $fifth;
-$warning: $fourth
+$warning: $fourth;
 
+// tabs variables
+
+$tabs-boxed-link-hover-background-color: transparent;
+$tabs-boxed-link-active-background-color: transparent;
+$tabs-boxed-link-active-border-color: $third;
+$tabs-boxed-link-active-border-bottom-color: $third;
 // @import '../../node_modules/bulma';

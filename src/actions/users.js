@@ -55,7 +55,7 @@ export const userCreateWithPhoto = ( uid, email, firstName, lastName, color, pho
                     await db.collection('users').doc(`${uid}`).set({data: newUser})
 
                     Swal.fire('Perfil registrado', firstName, 'success')
-                    console.log(newUser);
+                    
                     dispatch( addUserToStore( newUser, uid ) ) 
                 } ) 
             }
