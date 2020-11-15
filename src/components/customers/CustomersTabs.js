@@ -1,40 +1,16 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useLocation } from 'react-router-dom';
-
-const init = {
-    search: false,
-    create: false
-}
 
 export const CustomersTabs = () => {
     
     const location = useLocation();
 
-    const [selected, setSelected] = useState(init)
-
-    useEffect(() => {
-        if( location.pathname === '/customers' ){
-            console.log(location.pathname);
-            setSelected({
-                search: true,
-                create: false
-            })
-        }else{
-            setSelected({
-                search: false,
-                create: true
-            })
-        }
-    }, [])
-
-
     return (
         <div className="tabs is-boxed">
             <ul>
-                <li className={`${selected.search && 'is-active'}`}>
+                <li className={`${location.pathname === '/customers' && 'is-active'}`}>
                     <Link
                         className="has-text-white"
                         to="/customers"
@@ -44,7 +20,7 @@ export const CustomersTabs = () => {
                         <span>Buscar</span>
                     </Link>
                 </li>
-                <li className={`${selected.create && 'is-active'}`}>
+                <li className={`${location.pathname === '/customers/create' && 'is-active'}`}>
                     <Link
                         className="has-text-white"
                         to="/customers/create"           

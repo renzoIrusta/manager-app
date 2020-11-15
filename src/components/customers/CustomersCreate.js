@@ -23,8 +23,13 @@ export const CustomersCreate = () => {
     }
 
     const onSubmit = ( data ) => {
-        fireSwal( file )
-        dispatch( customerCreate( data, file ) );
+        const dataLower = {
+            ...data,
+            firstName: data.firstName.toLowerCase(),
+            lastName: data.lastName.toLowerCase()
+        }
+        fireSwal( file );
+        dispatch( customerCreate( dataLower, file ) );
     }
 
     return (

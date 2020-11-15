@@ -45,7 +45,6 @@ export const CustomerSearcher = () => {
                     </button>
                     </div>
                 </div>
-
             </form>
             <div className="custom-container mt-3">
                 {
@@ -54,7 +53,7 @@ export const CustomerSearcher = () => {
                         <UserCard
                             key={customer.id}
                             photoUrl={customer.data.photoUrl}
-                            name={customer.data.name}
+                            name={customer.data.firstName}
                             email={customer.data.email}
                             phone={customer.data.phone}
                             color={customer.data.color}
@@ -62,7 +61,6 @@ export const CustomerSearcher = () => {
 
                     ))
                 }
-
             </div>
         </>
     )

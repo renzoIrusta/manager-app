@@ -8,13 +8,13 @@ export const UsersScreen = () => {
 
     return (
         <div className="container p-5">
-            <h1 className="title has-text-white">Users Screen</h1>
+            <h1 className="title has-text-white">Colaboradores</h1>
             <div className="custom-container">
                 {
                     users.map(user => (
 
                         <UserCard
-                            key={user.idData}
+                            key={user.id}
                             photoUrl={user.data.photoUrl}
                             name={user.data.name}
                             email={user.data.email}
