@@ -1,18 +1,27 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { customersSearcher } from '../../actions/customers';
+import { Redirect } from 'react-router-dom';
+import { customerSelect, customersSearcher } from '../../actions/customers';
 import { UserCard } from '../users/UserCard';
 
 export const CustomerSearcher = () => {
 
-    const customers = useSelector(state => state.customers)
+    const { customersFound, customerActive } = useSelector(state => state.customers)
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (data, e) => {
 
-        dispatch(customersSearcher(data.search));
+        dispatch(customersSearcher(data.search.toLowerCase()));
+
+    }
+
+    const handleClick = ( id ) => {
+
+        const customer = customersFound.find( customer => customer.id === id );
+        
+        dispatch( customerSelect( customer ) );
 
     }
 
@@ -48,15 +57,17 @@ export const CustomerSearcher = () => {
             </form>
             <div className="custom-container mt-3">
                 {
-                    customers.map(customer => (
+                    customersFound.map(customer => (
 
                         <UserCard
-                            key={customer.id}
-                            photoUrl={customer.data.photoUrl}
-                            name={customer.data.firstName}
-                            email={customer.data.email}
-                            phone={customer.data.phone}
                             color={customer.data.color}
+                            email={customer.data.email}
+                            name={`${customer.data.firstName} ${customer.data.lastName}`}
+                            key={customer.id}
+                            onClickFunction={ () => ( handleClick( customer.id ) ) }
+                            path="/customers/profile"
+                            photoUrl={customer.data.photoUrl}
+                            phone={customer.data.phone}
                         />
 
                     ))

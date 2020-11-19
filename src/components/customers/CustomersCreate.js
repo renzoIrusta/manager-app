@@ -22,14 +22,16 @@ export const CustomersCreate = () => {
         }
     }
 
-    const onSubmit = ( data ) => {
+    const onSubmit = ( data, e ) => {
         const dataLower = {
             ...data,
-            firstName: data.firstName.toLowerCase(),
-            lastName: data.lastName.toLowerCase()
+            firstName: data.firstName.trim().toLowerCase(),
+            lastName: data.lastName.trim().toLowerCase()
         }
         fireSwal( file );
         dispatch( customerCreate( dataLower, file ) );
+        e.target.reset();
+        setFile(undefined)
     }
 
     return (

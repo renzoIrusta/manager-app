@@ -30,6 +30,7 @@ export const DashboardRoutes = () => {
                     <Route exact path="/todo" component={ ToDoScreen } />
                     <Route exact path="/customers" component={ CustomersScreen } />
                     <Route exact path="/customers/create" component={ CustomersScreen } />
+                    <Route exact path="/customers/profile" component={ CustomersScreen } />
                     {
                         admin &&
                         <Route exact path="/register" component={ CashRegisterScreen } />

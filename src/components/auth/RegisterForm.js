@@ -31,8 +31,15 @@ export const RegisterForm = () => {
     }
 
     const onSubmit = (data, e) => { 
+
+        const lower = {
+            ...data,
+            firstName: data.firstName.toLowerCase(),
+            lastName: data.lastName.toLowerCase(),
+        }
+
         fireSwal( file )
-        dispatch( startRegisterWithEmailPassword(data, file) ) 
+        dispatch( startRegisterWithEmailPassword(lower, file) ) 
         e.target.reset();
         setFile(undefined)
     }

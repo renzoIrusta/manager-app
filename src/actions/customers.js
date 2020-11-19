@@ -1,11 +1,16 @@
 import { types } from "../types/types";
 import Swal from "sweetalert2";
-import { db, dbSql, storage } from "../firebase/config";
+import { db, storage } from "../firebase/config";
 import { generateKeywords } from "../helpers/keywordGenerator";
 
 export const addCutomersToStore = (customers) => ({
-    type: types.customersFinded,
+    type: types.customersFound,
     payload: customers
+})
+
+export const customerSelect = ( customer ) => ({
+    type: types.customerSelected,
+    payload: customer
 })
 
 export const customersSearcher = ( value ) => {
@@ -61,7 +66,7 @@ export const customerPhoto = ( id, image, customer ) => {
         uploadTask.on(
             'state_changed',
             snapshot => {
-                let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                return (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             },
             error => {
                 Swal.fire('error', 'Falló la carga de la imagen', 'error')
@@ -80,3 +85,4 @@ export const customerPhoto = ( id, image, customer ) => {
     }
 
 }
+

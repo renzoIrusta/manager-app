@@ -2,25 +2,26 @@
 
 export const types = {
 
-    login        : '[Auth] Login',
-    logout       : '[Auth] Logout',
+    login            : '[Auth] Login',
+    logout           : '[Auth] Logout',
 
-    uiOpenNavbar : '[UI] Open navbar',
-    uiCloseNavbar: '[UI] Close navbar',
-    uiOpenModal: '[UI] Open modal',
-    uiCloseModal: '[UI] Close modal',
+    uiOpenNavbar     : '[UI] Open navbar',
+    uiCloseNavbar    : '[UI] Close navbar',
+    uiOpenModal      : '[UI] Open modal',
+    uiCloseModal     : '[UI] Close modal',
 
-    createUser   : '[Users] Create User',
-    loadUsers: '[Users] Load Users',
+    createUser       : '[Users] Create User',
+    loadUsers        : '[Users] Load Users',
 
-    eventSetActive: '[event] Set active',
-    eventAddNew: '[event] Add new',
-    clearActiveEvent: '[event] Clear active event',
-    eventUpdate: '[event] Event updates',
-    eventDelete: '[event] Event delete',
-    downloadEvents: '[event] Download events',
+    eventSetActive   : '[Event] Set active',
+    eventAddNew      : '[Event] Add new',
+    clearActiveEvent : '[Event] Clear active event',
+    eventUpdate      : '[Event] Event updates',
+    eventDelete      : '[Event] Event delete',
+    downloadEvents   : '[Event] Download events',
 
-    customersFinded: '[customers] Finded',
-    customersClean: '[customers] Clean state',
+    customersFound   : '[Customers] Found',
+    customerSelected : '[Customers] Selected',
+    customersClean   : '[Customers] Clean state',
 
 }

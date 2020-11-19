@@ -10,6 +10,7 @@ const createKeywords = name => {
   
   
   export const generateKeywords = (firstName, lastName) => {
+
     const keywordFullName = createKeywords(`${firstName} ${lastName}`);
     const keywordLastNameFirst = createKeywords(`${lastName} ${firstName}`);
     
@@ -17,4 +18,5 @@ const createKeywords = name => {
         ...keywordFullName,
         ...keywordLastNameFirst,
       ]
+      
   }
