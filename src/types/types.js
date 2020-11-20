@@ -9,6 +9,8 @@ export const types = {
     uiCloseNavbar    : '[UI] Close navbar',
     uiOpenModal      : '[UI] Open modal',
     uiCloseModal     : '[UI] Close modal',
+    uiOpenSecondModal: '[UI] Open second modal',
+    uiCloseSecondModal: '[UI] Close second modal',
 
     createUser       : '[Users] Create User',
     loadUsers        : '[Users] Load Users',

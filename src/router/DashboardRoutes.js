@@ -17,29 +17,32 @@ import { UsersScreen } from '../components/users/UsersScreen';
 export const DashboardRoutes = () => {
 
     const { admin } = useSelector(state => state.auth)
+    const { customerActive } = useSelector(state => state.customers)
 
     return (
         <>
             <NavBar />
             <div>
                 <Switch>
-                    <Route exact path="/" component={ Dashboard } />
-                    <Route exact path="/calendar" component={ CalendarScreen } />
-                    <Route exact path="/users" component={ UsersScreen } />
-                    <Route exact path="/users/register" component={ RegisterScreen } />
-                    <Route exact path="/todo" component={ ToDoScreen } />
-                    <Route exact path="/customers" component={ CustomersScreen } />
-                    <Route exact path="/customers/create" component={ CustomersScreen } />
-                    <Route exact path="/customers/profile" component={ CustomersScreen } />
+                    <Route exact path="/" component={Dashboard} />
+                    <Route exact path="/calendar" component={CalendarScreen} />
+                    <Route exact path="/users" component={UsersScreen} />
+                    <Route exact path="/users/register" component={RegisterScreen} />
+                    <Route exact path="/todo" component={ToDoScreen} />
+                    <Route exact path="/customers" component={CustomersScreen} />
+                    <Route exact path="/customers/create" component={CustomersScreen} />
+                    <Route exact path="/customers/profile">
+                        {customerActive.data ? <CustomersScreen /> : <Redirect to="/customers" /> }
+                    </Route>
                     {
                         admin &&
-                        <Route exact path="/register" component={ CashRegisterScreen } />
+                        <Route exact path="/register" component={CashRegisterScreen} />
                     }
                     {
                         admin &&
-                        <Route exact path="/admin" component={ AdminScreen } />
+                        <Route exact path="/admin" component={AdminScreen} />
                     }
-                    
+
                     <Redirect to="/" />
                 </Switch>
             </div>

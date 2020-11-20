@@ -1,13 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { customerSelect, customersSearcher } from '../../actions/customers';
 import { UserCard } from '../users/UserCard';
 
 export const CustomerSearcher = () => {
 
-    const { customersFound, customerActive } = useSelector(state => state.customers)
+    const { customersFound } = useSelector(state => state.customers)
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
 
