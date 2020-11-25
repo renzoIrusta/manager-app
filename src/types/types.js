@@ -25,5 +25,6 @@ export const types = {
     customersFound   : '[Customers] Found',
     customerSelected : '[Customers] Selected',
     customersClean   : '[Customers] Clean state',
+    customerServices : '[Customers] Services',
 
 }

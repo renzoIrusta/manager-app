@@ -3,6 +3,7 @@ import { types } from '../types/types';
 const initialState = {
     customersFound: [],
     customerActive: {},
+    customerServices: [],
 };
 
 export const customersReducer = (state = initialState, action) => {
@@ -19,6 +20,12 @@ export const customersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 customerActive: action.payload
+            }
+
+        case types.customerServices:
+            return {
+                ...state,
+                customerServices: action.payload
             }
 
         case types.customersClean:

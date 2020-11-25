@@ -14,7 +14,7 @@ import { uiOpenModal } from '../../actions/ui';
 import { AddNewFab } from '../ui/AddNewFab';
 import { downloadEvents, eventSetActive } from '../../actions/calendar';
 import { db } from '../../firebase/config';
-import { prepareDate } from '../../helpers/prepareDate';
+import { prepareStartEndDate } from '../../helpers/prepareDate';
 
 moment.locale('es')
 
@@ -34,7 +34,7 @@ export const CalendarScreen = () => {
             querySnapshot.forEach((doc) => {
                 docs.push({ ...doc.data(), id: doc.id });
             });
-            const docsDates = prepareDate( docs )
+            const docsDates = prepareStartEndDate( docs )
             dispatch(downloadEvents( docsDates ))
         });
     

@@ -2,6 +2,8 @@ import { types } from "../types/types";
 import Swal from "sweetalert2";
 import { db, storage } from "../firebase/config";
 import { generateKeywords } from "../helpers/keywordGenerator";
+import { loadData } from "../helpers/crudData";
+import { prepareDate } from "../helpers/prepareDate";
 
 export const addCutomersToStore = (customers) => ({
     type: types.customersFound,
@@ -12,6 +14,12 @@ export const customerSelect = ( customer ) => ({
     type: types.customerSelected,
     payload: customer
 })
+
+export const addServicesToStore = ( services ) => ({
+    type: types.customerServices,
+    payload: services
+})
+
 
 export const customersSearcher = ( value ) => {
 
@@ -82,6 +90,33 @@ export const customerPhoto = ( id, image, customer ) => {
             }
         )
 
+    }
+
+}
+
+export const customerCreateService = ( service, customerId ) => {
+
+    return async () => {
+        try {
+            await db.collection(`customers/${customerId}/services`).add( service )
+            Swal.fire('Servicio creado', service.name, 'success')  
+        } catch (error) {
+            Swal.fire(error)
+        }
+    }
+
+} 
+
+export const customerGetServices = ( customerId ) => {
+
+    return async ( dispatch ) => {
+        try {
+           const services = await loadData( `customers/${customerId}/services` )
+           const servicesDate = prepareDate( services )
+            dispatch( addServicesToStore( servicesDate ) )
+        } catch (error) {
+            Swal.fire(error)
+        }
     }
 
 }
