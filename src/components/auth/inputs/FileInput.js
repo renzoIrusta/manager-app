@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const FileInput = ({ errors, register, handleChange, fileName }) => {
+export const FileInput = ({ errors, register, handleChange, fileName, textColor }) => {
 
     return (
         <div className="field mt-5">
-            <label className="label has-text-light">Subí una imagen</label>
+            <label className={`label ${ textColor || 'has-text-light'}`}>Subí una imagen</label>
             <div className="control has-icons-right">
 
                 <div className="file has-name is-fullwidth">
@@ -23,7 +23,7 @@ export const FileInput = ({ errors, register, handleChange, fileName }) => {
                                 Subí una imagen
                             </span>
                         </span>
-                        <span className="file-name has-text-white">
+                        <span className={`file-name ${ textColor || 'has-text-light'}`}>
                             {fileName ? fileName : 'Imagen'}
                         </span>
                     </label>

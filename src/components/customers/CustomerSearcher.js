@@ -54,7 +54,7 @@ export const CustomerSearcher = () => {
                     </div>
                 </div>
             </form>
-            <div className="custom-container mt-3">
+            <div className="custom-container mt-5">
                 {
                     customersFound.map(customer => (
 

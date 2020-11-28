@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
  export const fireSwal = ( file ) => {
 
     Swal.fire({
-        title: `${ file ? 'Creando perfil con imagen...' : 'Creando perfil...' }`,
+        title: `${ file ? 'Subiendo imagen...' : 'Creando' }`,
         text: 'Por favor espere...',
         allowOutsideClick: false,
         willOpen: () => {

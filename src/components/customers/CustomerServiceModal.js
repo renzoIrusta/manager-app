@@ -9,6 +9,8 @@ import { uiCloseSecondModal } from '../../actions/ui';
 import { TextArea } from '../auth/inputs/TextArea';
 import { TextInput } from '../auth/inputs/TextInput';
 import { customerCreateService } from '../../actions/customers';
+import { FileInput } from '../auth/inputs/FileInput';
+import { fireSwal } from '../../helpers/fireSwal';
 
 const minDate = moment().hours(-72)
 const now = moment().minutes(0).seconds(0);
@@ -22,18 +24,25 @@ export const CustomerServiceModal = () => {
 
     const [ date, setDate ] = useState( now.toDate() );
 
+    const [file, setFile] = useState(undefined);
+
     const { register, errors, handleSubmit, reset } = useForm();
 
     const closeModal = () => {
-
         dispatch(uiCloseSecondModal())
         reset();
+        // setFile(undefined)
     }
 
     const handleDate = (e) => {
-
         setDate(e)
+    }
 
+
+    const handleChange = (e) => {
+        if (e.target.files[0]){
+            setFile(e.target.files[0])
+        }
     }
 
 
@@ -42,12 +51,14 @@ export const CustomerServiceModal = () => {
     //    dispatch(uiCloseModal());
     // }
 
-    const onSubmit = (data, e) => {
+    const onSubmit = ( data ) => {
 
         const service = { ...data, date }
         
-        dispatch( customerCreateService( service, customerActive.id ) )
+        fireSwal( file )
+        dispatch( customerCreateService( service, customerActive.id, file ) )
         dispatch( uiCloseSecondModal() )
+
     }
 
     return (
@@ -85,6 +96,13 @@ export const CustomerServiceModal = () => {
                             label="Servicio"
                             textColor="has-text-grey-dark"
                         // value={name}
+                        />
+                        <FileInput 
+                            errors={errors}
+                            register={register}
+                            handleChange={handleChange}
+                            fileName={ file ? file.name : 'Image'}
+                            textColor="has-text-grey-dark"
                         />
                         <TextArea
                             errors={errors}

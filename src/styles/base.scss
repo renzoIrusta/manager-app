@@ -22,7 +22,7 @@ html, body {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;
+    // height: 100vh;
     justify-content: space-evenly;
     width: 100%;
 }
@@ -40,4 +40,28 @@ html, body {
 
 .capitalize {
     text-transform: capitalize;
+}
+
+.w_is5by10{
+    width: 50%;
+}
+
+.w_is6by10{
+    width: 60%;
+}
+
+.w_is7by10{
+    width: 70%;
+}
+
+.w_is8by10 {
+    width: 80%;
+}
+
+.w_is9by10 {
+    width: 90%;
+}
+
+.w_is10by10 {
+    width: 100%;
 }
