@@ -10,14 +10,14 @@ export const Dashboard = () => {
     return (
         <div className="container">
             <div className="card__container">
-                {
+                {/* {
                     admin &&
                     <DashboarCard
                     icon={<i className="fas fa-cash-register"></i>}
                     path='/register'
                     color='card__clean'
                     />
-                }
+                } */}
                 <DashboarCard
                     icon={<i className="fas fa-users"></i>}
                     path='/users'

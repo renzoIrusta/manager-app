@@ -7,3 +7,4 @@ Seleccionar elemento para que cambie el color en el dashboard
 
 Agregar buscador en modal calendario. Terminar de agregar el estado de los ingresos en el calendario. Recordar que solo el manejo de las fechas necesita el useState, el resto viene con el reack-hook-form
 
+Arreglar bug en la fecha, no se puede pasar una fecha vacía poque crashea mal.

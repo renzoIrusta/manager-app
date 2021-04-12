@@ -58,6 +58,7 @@ export const CalendarModal = () => {
 
     const handleEndDate = (e) => {
         // setDateEnd(e)
+        console.log(e)
         setFormValues({
             ...formValues,
             end: e
@@ -66,11 +67,13 @@ export const CalendarModal = () => {
 
     const handleStartDate = (e) => {
         // setDateStart(e);
+        console.log(e)
         setFormValues({
             ...formValues,
             start: e
         })
     }
+
 
     const handleDelete = () => {
        dispatch( calendarDeleteEvent( activeEvent.id ) )
@@ -122,6 +125,8 @@ export const CalendarModal = () => {
                                     minDate={now.toDate()}
                                     onChange={handleStartDate}
                                     value={start}
+                                    clearIcon={null}
+                                    required
                                 />
                             </div>
                         </div>
@@ -132,6 +137,7 @@ export const CalendarModal = () => {
                                     onChange={handleEndDate}
                                     minDate={start}
                                     value={end}
+                                    clearIcon={null}
                                 />
                             </div>
                         </div>
@@ -209,3 +215,4 @@ export const CalendarModal = () => {
 
     )
 }
+

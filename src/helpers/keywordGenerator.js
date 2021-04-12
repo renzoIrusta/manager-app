@@ -1,9 +1,9 @@
 const createKeywords = name => {
     const arrName = [];
-    let curName = '';
+    let currName = '';
     name.split('').forEach(letter => {
-      curName += letter;
-      arrName.push(curName);
+      currName += letter;
+      arrName.push(currName);
     });
     return arrName;
   }
